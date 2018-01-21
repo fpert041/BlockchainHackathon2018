@@ -40,6 +40,7 @@ window.App = {
       account = accounts[0];
 
       self.getNumUsers(); //<<
+      self.getNumTrans();
     });
   },
 
@@ -62,6 +63,23 @@ window.App = {
     }).catch(function(e) {
       console.log(e);
       self.setStatus("Error getting numUsers; see log.");
+    });
+  },
+
+  getNumTrans: function() {
+    var self = this;
+
+    var meta;
+    MetaCoin.deployed().then(function(instance) {
+      meta = instance;
+      return meta.getNumTrans.call({from: account});
+    }).then(function(value) {
+
+      var numTrans = document.getElementById("len2"); //<<
+      numTrans.innerHTML = value.valueOf(); //<<
+    }).catch(function(e) {
+      console.log(e);
+      self.setStatus("Error getting numTrans; see log.");
     });
   },
 
@@ -112,19 +130,18 @@ window.App = {
     var len_id = parseInt(document.getElementById("add_tlen").value);
     var amt = parseInt(document.getElementById("add_tam").value);
     var inter = parseInt(document.getElementById("add_tin").value);
-
     this.setStatus("Initiating transaction... (please wait)");
 
     var meta;
     MetaCoin.deployed().then(function(instance) {
       meta = instance;
-      return meta.addUser(trans_id, timestamp, borr_id, len_id, amt, inter, {from: account});
+      return meta.addTransaction(1, 1, 1, 1, 1, 1, {from: account});
     }).then(function() {
       self.setStatus("Transaction Added!");
-
+      //self.getNumTrans();
     }).catch(function(e) {
       console.log(e);
-      self.setStatus("Error whilst adding User; see log.");
+      self.setStatus("Error whilst adding Transaction; see log.");
     });
   },
 

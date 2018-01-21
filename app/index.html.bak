@@ -17,12 +17,12 @@
   <button id="change" onclick="App.changeKarma()">Go</button>
   <br>
 
-  <!--<br><label for="add_t">Add Transaction:</label><br><input type="text" id="add_tid" placeholder="insert: transaction_ID"></input><input type="text" id="add_tt" placeholder="insert: timestamp"></input><input type="text" id="add_tbow" placeholder="insert: borrower_ID"></input><input type="text" id="add_tlen" placeholder="insert: lender_ID"></input><input type="text" id="add_tam" placeholder="insert: amount"></input><input type="text" id="add_tin" placeholder="insert: interest"></input>
+  <br><label for="add_t">Add Transaction:</label><br><input type="text" id="add_tid" placeholder="insert: transaction_ID"></input><input type="text" id="add_tt" placeholder="insert: timestamp"></input><input type="text" id="add_tbow" placeholder="insert: borrower_ID"></input><input type="text" id="add_tlen" placeholder="insert: lender_ID"></input><input type="text" id="add_tam" placeholder="insert: amount"></input><input type="text" id="add_tin" placeholder="insert: interest"></input>
   <button id="at" onclick="App.addTransaction()">Go</button>
   <br>
 
   <br><label for="close_t">Close Transaction:</label><br><input type="text" id="close_tid" placeholder="insert: transaction_ID"><input type="text" id="close_ts" placeholder="insert: state (0 => still open, 1 => repaid, 2 => defaulted)"></input><button id="ct" onclick="App.sendCoin()">Go</button>
-  <br>-->
+  <br>
 
    <br><label for="get_r">Retrieve User Rating:</label><br><input type="text" id="getter_ID" placeholder="insert: ID (as int256)"></input><button id="get" onclick="App.getRating()">Get</button>
 <h3>User has <span class="black"><span id="balance"></span> KARMA-rating </span></h3>

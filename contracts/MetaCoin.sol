@@ -31,6 +31,28 @@ contract MetaCoin {
         contexts[ratingAgent].init = true;
     }
     
+    //------------helpers-----------
+    
+    //// Remove transactions older than a certain timestamp 
+    /// Note: on the ethereum blockchain this is not really userful
+    /// in terms of  data protection, but it helps the logic of the system
+    /// and it may be an interesting aspect for developing a different 
+    /// blockchain
+    function removeOldTransactions(uint beforeTimestamp)  public { 
+        Record storage context  = contexts[msg.sender]; // assigns reference
+        if (msg.sender != ratingAgent || !context.init) return; // restricted access method
+        
+        if (context.transtactions.length == 0){ return;}
+
+        for (uint i = 0; i<context.transtactions.length; i++){
+            if(context.transtactions[i].timestamp < beforeTimestamp){
+                context.transtactions[i] = context.transtactions[context.transtactions.length-1];
+                delete context.transtactions[context.transtactions.length-1];
+                context.transtactions.length--;
+            }
+        }
+    }
+    
     //------------initialisers-----------
 
     /// add User
