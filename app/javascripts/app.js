@@ -103,6 +103,51 @@ window.App = {
     });
   },
 
+  addTransaction: function() {
+    var self = this;
+
+    var trans_id = parseInt(document.getElementById("add_tid").value);
+    var timestamp = parseInt(document.getElementById("add_tt").value);
+    var borr_id = parseInt(document.getElementById("add_tbow").value);
+    var len_id = parseInt(document.getElementById("add_tlen").value);
+    var amt = parseInt(document.getElementById("add_tam").value);
+    var inter = parseInt(document.getElementById("add_tin").value);
+
+    this.setStatus("Initiating transaction... (please wait)");
+
+    var meta;
+    MetaCoin.deployed().then(function(instance) {
+      meta = instance;
+      return meta.addUser(trans_id, timestamp, borr_id, len_id, amt, inter, {from: account});
+    }).then(function() {
+      self.setStatus("Transaction Added!");
+
+    }).catch(function(e) {
+      console.log(e);
+      self.setStatus("Error whilst adding User; see log.");
+    });
+  },
+
+
+  closeTransaction: function() {
+    var self = this;
+    
+    var close_id = parseInt(document.getElementById("close_tid").value);
+    var status = parseInt(document.getElementById("close_ts").value);
+
+    this.setStatus("Initiating transaction... (please wait)");
+
+    var meta;
+    MetaCoin.deployed().then(function(instance) {
+      meta = instance;
+      return meta.changeKarma(changed_id, karma_amt, {from: account});
+    }).then(function() {
+      self.setStatus("Transaction Closed!");
+    }).catch(function(e) {
+      console.log(e);
+      self.setStatus("Error whilst adding User; see log.");
+    });
+  },
 
   changeKarma: function() {
     var self = this;
