@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaCoin - Truffle Webpack Demo w/ Frontend</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h1>KarmaChain</h1>
+  <h2>>>Credit Rating for the Unbanked</h2>
+  
+
+  <br><label for="add_u">Add User:</label><input type="text" id="user_id" placeholder="insert: ID (as int256)"></input><button id="add" onclick="App.addUser()">Go</button>
+
+  <br>
+  <br><label for="change_k">Change Karma:</label><input type="text" id="changed_id" placeholder="insert: user_id (as int256)"></input><input type="text" id="karma_amt" placeholder="insert: change (as int8)"></input>
+  <button id="change" onclick="App.changeKarma()">Go</button>
+  <br>
+  <br><label for="add_t">Add Transaction:</label><input type="text" id="add_tran" placeholder="insert: transaction_ID, borrower_ID, lender_ID, amount, interest"></input><button id="at" onclick="App.addTransaction()">Go</button>
+  <br>
+  <br><label for="close_t">Close Transaction:</label><input type="text" id="close_tran" placeholder="insert: transaction_ID, state"></input><button id="ct" onclick="App.sendCoin()">Go</button>
+  <br>
+
+   <br><label for="get_r">Retrieve User Rating:</label><input type="text" id="getter_ID" placeholder="insert: ID (as int256)"></input><button id="get" onclick="App.getRating()">Get</button>
+<h3>User has <span class="black"><span id="balance"></span> KARMA-rating </span></h3>
+<br>
+
+<h4>There are <span class="black2"><span id="len"></span> users </span></h3>
+
+  <span id="status"></span>
+  <br>
+
+
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+</body>
+</html>
